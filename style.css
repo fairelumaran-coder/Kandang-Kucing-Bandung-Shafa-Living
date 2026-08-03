@@ -1,0 +1,683 @@
+/* ==========================================================================
+   SHAFA LIVING — DESIGN TOKENS
+   ========================================================================== */
+:root {
+  --color-bg: #FFFFFF;
+  --color-primary: #5C7C3D;
+  --color-primary-dark: #46602E;
+  --color-primary-tint: #EEF1E7;
+  --color-secondary: #F1F1EC;
+  --color-text: #1A1A1A;
+  --color-text-muted: #5C5C57;
+  --color-wood: #A9744F;
+  --color-wood-light: #D8C3AE;
+  --color-border: #E4E3DC;
+
+  --font-display: 'Poppins', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  --container-w: 1160px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 40px;
+  --space-5: 64px;
+  --space-6: 96px;
+
+  --header-h: 76px;
+  --transition: 0.25s ease;
+}
+
+/* ==========================================================================
+   RESET & BASE
+   ========================================================================== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-h);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul { list-style: none; }
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--color-text);
+}
+
+h1 { font-size: clamp(2rem, 4vw + 1rem, 3.25rem); font-weight: 700; }
+h2 { font-size: clamp(1.6rem, 2.4vw + 1rem, 2.4rem); }
+h3 { font-size: 1.05rem; }
+
+.container {
+  max-width: var(--container-w);
+  margin: 0 auto;
+  padding: 0 var(--space-3);
+}
+
+section { padding: var(--space-6) 0; }
+
+.eyebrow {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-wood);
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+}
+
+.eyebrow-center { text-align: center; }
+
+.section-lead {
+  max-width: 620px;
+  color: var(--color-text-muted);
+  font-size: 1.05rem;
+  margin-top: var(--space-2);
+}
+
+section h2 + .section-lead,
+.about h2 + .section-lead,
+.products h2 + .section-lead {
+  margin-top: var(--space-2);
+}
+
+.about .section-lead,
+.products .section-lead {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.about > .container > h2,
+.products > .container > h2,
+.why-us > .container > h2,
+.gallery > .container > h2 {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   SIGNATURE ELEMENT — JOINERY CORNER FRAME
+   A carpenter's corner-bracket mark, referencing the joinery and precision
+   of custom-built enclosures. Used sparingly on media and key cards.
+   ========================================================================== */
+.corner-frame,
+.corner-frame-sm {
+  position: relative;
+}
+
+.corner-frame::before,
+.corner-frame::after,
+.corner-frame-sm::before,
+.corner-frame-sm::after {
+  content: '';
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border-color: var(--color-wood);
+  pointer-events: none;
+}
+
+.corner-frame::before { top: -10px; left: -10px; border-top: 2px solid; border-left: 2px solid; }
+.corner-frame::after  { bottom: -10px; right: -10px; border-bottom: 2px solid; border-right: 2px solid; }
+
+.corner-frame-sm::before,
+.corner-frame-sm::after {
+  width: 16px;
+  height: 16px;
+}
+.corner-frame-sm::before { top: -8px; left: -8px; border-top: 2px solid; border-left: 2px solid; }
+.corner-frame-sm::after  { bottom: -8px; right: -8px; border-bottom: 2px solid; border-right: 2px solid; }
+
+/* ==========================================================================
+   BUTTONS
+   ========================================================================== */
+.btn {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 14px 28px;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition), color var(--transition), transform var(--transition);
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: #fff;
+}
+.btn-primary:hover { background: var(--color-primary-dark); }
+
+.btn-ghost {
+  border: 1.5px solid var(--color-border);
+  color: var(--color-text);
+}
+.btn-ghost:hover { border-color: var(--color-primary); color: var(--color-primary); }
+
+.btn-light {
+  background: #fff;
+  color: var(--color-primary-dark);
+}
+.btn-light:hover { background: var(--color-secondary); }
+
+.btn:focus-visible,
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-wood);
+  outline-offset: 3px;
+}
+
+/* ==========================================================================
+   HEADER
+   ========================================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: saturate(180%) blur(10px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+}
+
+.logo-mark {
+  width: 12px;
+  height: 12px;
+  background: var(--color-primary);
+  border-radius: 2px;
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}
+
+.main-nav ul {
+  display: flex;
+  gap: var(--space-4);
+}
+
+.main-nav a {
+  font-size: 0.95rem;
+  font-weight: 500;
+  position: relative;
+  padding: 4px 0;
+}
+
+.main-nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  background: var(--color-primary);
+  transition: width var(--transition);
+}
+
+.main-nav a:hover::after { width: 100%; }
+
+.btn-nav-cta { flex-shrink: 0; }
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-toggle span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--color-text);
+  transition: transform var(--transition), opacity var(--transition);
+}
+
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+.hero {
+  padding-top: var(--space-6);
+  padding-bottom: var(--space-6);
+  background: linear-gradient(180deg, var(--color-primary-tint) 0%, #fff 65%);
+}
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: var(--space-5);
+  align-items: center;
+}
+
+.hero-sub {
+  margin-top: var(--space-2);
+  font-size: 1.05rem;
+  color: var(--color-text-muted);
+  max-width: 480px;
+}
+
+.hero-actions {
+  margin-top: var(--space-4);
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.hero-image {
+  aspect-ratio: 4 / 5;
+  background: var(--color-secondary) center/cover no-repeat;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+}
+
+.hero-image-placeholder-text {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+/* ==========================================================================
+   TENTANG
+   ========================================================================== */
+.about-grid {
+  margin-top: var(--space-5);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+}
+
+.about-item {
+  padding: var(--space-2) var(--space-1);
+}
+
+.about-item h3 { margin-bottom: 8px; }
+.about-item p { color: var(--color-text-muted); font-size: 0.95rem; }
+
+/* ==========================================================================
+   PRODUK
+   ========================================================================== */
+.products { background: var(--color-secondary); }
+
+.product-grid {
+  margin-top: var(--space-5);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+}
+
+.product-card {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+}
+
+.product-card-custom {
+  background: var(--color-primary-tint);
+  border-color: transparent;
+}
+
+.product-icon {
+  font-size: 1.6rem;
+  margin-bottom: var(--space-2);
+}
+
+.product-card h3 { margin-bottom: 6px; }
+
+.product-card p {
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+  margin-bottom: var(--space-2);
+}
+
+.product-link {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--color-primary);
+}
+
+.product-link:hover { color: var(--color-primary-dark); }
+
+/* ==========================================================================
+   MENGAPA MEMILIH KAMI
+   ========================================================================== */
+.why-grid {
+  margin-top: var(--space-5);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+}
+
+.why-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.why-check {
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.why-card h3 { font-size: 0.98rem; }
+
+/* ==========================================================================
+   GALERI
+   ========================================================================== */
+.gallery-grid {
+  margin-top: var(--space-5);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+
+.gallery-item {
+  aspect-ratio: 1 / 1;
+  background: var(--color-secondary) center/cover no-repeat;
+  border-radius: var(--radius-sm);
+  margin: 8px;
+}
+
+.gallery-note {
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  margin-top: var(--space-4);
+}
+
+/* ==========================================================================
+   CTA
+   ========================================================================== */
+.cta {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.cta-inner {
+  text-align: center;
+  max-width: 640px;
+}
+
+.cta h2 { color: #fff; }
+
+.cta p {
+  margin-top: var(--space-2);
+  margin-bottom: var(--space-4);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.05rem;
+}
+
+/* ==========================================================================
+   KONTAK
+   ========================================================================== */
+.contact-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-5);
+  align-items: start;
+}
+
+.contact-list {
+  margin-top: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.contact-list li {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--space-2);
+}
+
+.contact-label {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-wood);
+}
+
+.contact-value a:hover { color: var(--color-primary); }
+
+.map-placeholder {
+  aspect-ratio: 4 / 3;
+  background: var(--color-secondary);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  margin: 10px;
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+.site-footer {
+  background: #1A1A18;
+  color: #D9D8D2;
+  padding: var(--space-5) 0 var(--space-2);
+}
+
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: #fff;
+}
+
+.footer-brand .logo-mark { background: var(--color-wood-light); }
+
+.footer-nav {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.footer-nav a:hover { color: #fff; }
+
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.9rem;
+}
+
+.footer-contact a:hover { color: #fff; }
+
+.footer-bottom {
+  padding-top: var(--space-2);
+  font-size: 0.82rem;
+  color: #9B9A93;
+  text-align: center;
+}
+
+/* ==========================================================================
+   FLOATING WHATSAPP BUTTON
+   ========================================================================== */
+.whatsapp-float {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 200;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #25D366;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.whatsapp-float svg {
+  width: 28px;
+  height: 28px;
+  fill: #fff;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.06);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.22);
+}
+
+.whatsapp-float:focus-visible {
+  outline: 2px solid var(--color-primary-dark);
+  outline-offset: 3px;
+}
+
+@media (max-width: 760px) {
+  .whatsapp-float {
+    right: 16px;
+    bottom: 16px;
+    width: 52px;
+    height: 52px;
+  }
+  .whatsapp-float svg { width: 26px; height: 26px; }
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+@media (max-width: 960px) {
+  .about-grid { grid-template-columns: repeat(2, 1fr); }
+  .why-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 860px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-media { order: -1; }
+  .hero-image { max-width: 360px; margin: 10px auto; }
+  .contact-inner { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 760px) {
+  :root { --space-6: 64px; --space-5: 40px; }
+
+  .btn-nav-cta { display: none; }
+
+  .nav-toggle { display: flex; }
+
+  .main-nav {
+    position: fixed;
+    top: var(--header-h);
+    left: 0;
+    right: 0;
+    background: #fff;
+    border-bottom: 1px solid var(--color-border);
+    transform: translateY(-8px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition), transform var(--transition);
+  }
+
+  .main-nav.is-open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .main-nav ul {
+    flex-direction: column;
+    gap: 0;
+    padding: var(--space-2) var(--space-3) var(--space-3);
+  }
+
+  .main-nav li { border-bottom: 1px solid var(--color-border); }
+  .main-nav a { display: block; padding: 14px 0; }
+
+  .product-grid { grid-template-columns: 1fr; }
+  .about-grid { grid-template-columns: 1fr; }
+  .why-grid { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .footer-inner { flex-direction: column; }
+}
+
+@media (max-width: 480px) {
+  .gallery-grid { grid-template-columns: 1fr; }
+}
